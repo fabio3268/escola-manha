@@ -6,7 +6,7 @@ class App
 {
     public function home()
     {
-        echo "Olá, Mundo!";;
+        echo "Olá, Mundo!";
     }
 
 }
