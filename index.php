@@ -19,7 +19,8 @@ $route->get("/blog","Web:blog");
 
 $route->group("/app");
 $route->get("/", "App:home");
-$group = $route->group(null);
+
+$route->group(null);
 
 $route->dispatch();
 
