@@ -20,6 +20,7 @@ $route->get("/localizacao","Web:location");
 $route->get("/blog","Web:blog");
 $route->get("/contato","Web:contact");
 $route->get("/perfil","Web:profile");
+$route->get("/faq","Web:faq");
 
 $route->group("/app");
 $route->get("/", "App:home");

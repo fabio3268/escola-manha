@@ -3,6 +3,7 @@
 namespace Source\App;
 
 use League\Plates\Engine;
+use Source\Models\Faq;
 
 class Web
 {
@@ -55,6 +56,17 @@ class Web
     public function profile ()
     {
         echo "Esse é o meu perfil legal!";
+    }
+
+    public function faq ()
+    {
+        $faqs = new Faq();
+        //var_dump($faqs->selectAll());
+
+        echo $this->view->render("faq",[
+            "faqs" => $faqs->selectAll(),
+            "name" => "Fábio"
+        ]);
     }
 
 
