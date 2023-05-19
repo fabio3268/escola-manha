@@ -6,5 +6,5 @@ const CONF_DB_PASS = "";
 const CONF_DB_NAME = "bd_escola_manha"; // aqui deve ser alterado para o nome do banco de dados
 
 
-const CONF_URL_BASE = "localhost/escola-manha"; // para produção
-const CONF_URL_TEST = "localhost/escola-manha"; //  para teste
+const CONF_URL_BASE = "https://www.localhost/escola-manha"; // para produção
+const CONF_URL_TEST = "https://www.localhost/escola-manha"; //  para teste

@@ -15,13 +15,26 @@ class Web
 
     public function home()
     {
-        //echo "Olá, Mundo! Home";
-        echo $this->view->render("home");
+        //$name = "Fábio";
+        echo $this->view->render("home",[
+            "name" => "Fábio",
+            "age" => 47
+        ]);
     }
 
     public function about()
     {
         echo $this->view->render("about");
+    }
+
+    public function services()
+    {
+        echo $this->view->render("services");
+    }
+
+    public function portfolio()
+    {
+        echo $this->view->render("portfolio");
     }
 
     public function location()
