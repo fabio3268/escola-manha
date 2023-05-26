@@ -3,6 +3,7 @@
 namespace Source\App;
 
 use League\Plates\Engine;
+use Source\Models\Course;
 use Source\Models\Faq;
 
 class Web
@@ -69,5 +70,16 @@ class Web
         ]);
     }
 
+    public function courses (array $data) {
+        $courses = new Course();
+
+        if(!empty($data["category"])){
+            echo $this->view->render("courses",[
+                "courses" => $courses->selectByCategory($data["category"])
+            ]);
+            return;
+        }
+        echo $this->view->render("courses",["courses" => $courses->selectAll()]);
+    }
 
 }
