@@ -70,7 +70,8 @@ class Web
         ]);
     }
 
-    public function courses (array $data) {
+    public function courses (array $data) : void
+    {
         $courses = new Course();
 
         if(!empty($data["category"])){
