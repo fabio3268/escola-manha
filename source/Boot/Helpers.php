@@ -15,3 +15,8 @@ function url(string $path = null): string
 
     return CONF_URL_BASE;
 }
+
+function moneyFormat(float $number) : string
+{
+    return number_format($number, 2, ',', '.');
+}

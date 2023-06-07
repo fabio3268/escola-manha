@@ -22,9 +22,11 @@ $route->get("/contato","Web:contact");
 $route->get("/perfil","Web:profile");
 $route->get("/faq","Web:faq");
 
-$route->get("/cursos","Web:courses");
-$route->get("/cursos/{category}","Web:courses");
 
+// Rotas Cursos
+
+$route->get("/cursos","Web:courses");
+$route->get("/cursos/{categoryName}","Web:courses");
 
 $route->group("/app");
 $route->get("/", "App:home");

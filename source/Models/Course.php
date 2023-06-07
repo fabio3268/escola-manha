@@ -6,6 +6,7 @@ use Source\Core\Connect;
 
 class Course
 {
+
     public function selectAll ()
     {
         $query = "SELECT * FROM courses";
@@ -13,12 +14,12 @@ class Course
         return $stmt->fetchAll();
     }
 
-    public function selectByCategory (string $category)
+    public function selectByCategory(string $categoryName)
     {
-        $query = "SELECT courses.name, price, abstract
-                  FROM courses
-                  JOIN categories ON categories.id = courses.category_id
-                  WHERE categories.name = '{$category}'";
+        $query = "SELECT courses.* 
+                  FROM courses 
+                  JOIN categories ON categories.id = courses.category_id 
+                  WHERE categories.name LIKE '{$categoryName}'";
         $stmt = Connect::getInstance()->query($query);
         return $stmt->fetchAll();
     }

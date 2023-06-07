@@ -1,5 +1,7 @@
 <?php
-   $this->layout("_theme");
+    $this->layout("_theme",[
+        "categories" => $categories
+    ]);
 ?>
 
 <!-- ======= About Section ======= -->
