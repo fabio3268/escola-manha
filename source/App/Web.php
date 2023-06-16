@@ -29,6 +29,19 @@ class Web
         ]);
     }
 
+    public function register(array $data)
+    {
+        if(!empty($data)){
+            $response = json_encode($data);
+            echo $response;
+            return;
+        }
+
+        echo $this->view->render("register",[
+            "categories" => $this->categories
+        ]);
+    }
+
     public function about()
     {
         echo $this->view->render("about",[
