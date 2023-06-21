@@ -37,7 +37,7 @@ class Web
             return;
         }
 
-        echo $this->view->render("register",[
+        echo $this->view->render("register-clean",[
             "categories" => $this->categories
         ]);
     }
