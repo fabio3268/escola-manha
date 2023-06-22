@@ -24,7 +24,7 @@ class Users extends Api
 
     public function create (array $data) : void
     {
-        if(!empty($data)){
+       if(!empty($data)){
             $user = new User($data["name"],$data["email"],$data["password"]);
             if(!$user->insert()){
                 $response["error"] = [
@@ -40,11 +40,11 @@ class Users extends Api
             $response["success"] = [
                 "code" => 200,
                 "type" => "success",
-                "message" => $user->getMessage()
-            ];
-            $response["user"] = [
-                "name" => $user->getName(),
-                "email" => $user->getEmail(),
+                "message" => $user->getMessage(),
+                "user" => [
+                    "name" => $user->getName(),
+                    "email" => $user->getEmail(),
+                ]
             ];
 
             http_response_code(200);

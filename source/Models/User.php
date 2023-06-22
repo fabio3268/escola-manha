@@ -60,7 +60,7 @@ class User {
         return $this->message;
     }
 
-    public function insert ()
+    public function insert () : bool
     {
         $query = "INSERT INTO users VALUES (NULL,:name,:email,:password)";
         $stmt = Connect::getInstance()->prepare($query);
