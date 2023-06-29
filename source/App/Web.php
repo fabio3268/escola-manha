@@ -42,6 +42,11 @@ class Web
         ]);
     }
 
+    public function login (array $data) : void
+    {
+        echo $this->view->render("user-auth",[]);
+    }
+
     public function about()
     {
         echo $this->view->render("about",[

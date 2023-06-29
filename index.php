@@ -14,7 +14,10 @@ $route->group(null);
 
 $route->get("/", "Web:home");
 $route->get("/sobre", "Web:about");
+
 $route->get("/registro","Web:register");
+$route->get("/login","Web:login");
+
 $route->get("/servicos", "Web:services");
 $route->get("/portifolio", "Web:portfolio");
 $route->get("/localizacao","Web:location");
