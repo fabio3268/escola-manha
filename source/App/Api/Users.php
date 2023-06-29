@@ -54,12 +54,24 @@ class Users extends Api
 
     public function login (array $data) : void
     {
+
+        $user = new User();
+
+        if(!$user->auth($data["email"],$data["password"])){
+            $response = [
+                "code" => 401,
+                "type" => "error",
+                "message" => "E-mail ou senha inválidos..."
+            ];
+            echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+            return;
+        }
+
         $response = [
             "code" => 200,
-            "type" => "error",
-            "message" => "Resposta da API"
+            "type" => "success",
+            "message" => "Usuário autenticado corretamente..."
         ];
         echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-
     }
 }
