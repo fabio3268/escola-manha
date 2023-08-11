@@ -26,7 +26,6 @@ $route->get("/contato","Web:contact");
 $route->get("/perfil","Web:profile");
 $route->get("/faq","Web:faq");
 
-
 // Rotas Cursos
 
 $route->get("/cursos","Web:courses");
@@ -34,7 +33,10 @@ $route->get("/cursos/{categoryName}","Web:courses");
 
 $route->group("/app");
 $route->get("/", "App:home");
+$route->group(null);
 
+$route->group("/admin");
+$route->get("/", "Adm:home");
 $route->group(null);
 
 $route->dispatch();
