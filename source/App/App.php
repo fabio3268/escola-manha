@@ -13,7 +13,7 @@ class App
 
     public function home()
     {
-        echo "Olá, Mundo! Eu sou o App! :)";
+        echo $this->view->render("home",[]);
     }
 
 }

@@ -15,7 +15,16 @@ class Adm
 
     public function home()
     {
-        echo "Olá, eu sou o Adm!";
+        echo $this->view->render(
+            "home"
+        );
+    }
+
+    public function teachers ()
+    {
+        echo $this->view->render(
+            "teachers"
+        );
     }
 
 }

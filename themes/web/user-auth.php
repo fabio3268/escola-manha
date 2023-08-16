@@ -14,27 +14,14 @@
 </form>
 
 <script type="text/javascript" async>
+    //http://localhost/escola-manha/api/user/login
     const url = `<?= url("api/user/login");?>`;
-
-    async function request (url, options) {
-        try {
-            const response = await fetch (url, options);
-            const data = await response.json();
-            return data;
-        } catch (err) {
-            console.error(err);
-            return {
-                type: "error",
-                message: err.message
-            };
-        }
-    }
 
     document.querySelector("form").addEventListener("submit", async (e) => {
         e.preventDefault();
         const formData = new FormData(document.querySelector("form"));
         const options = {
-            method: 'POST',
+            method: 'GET',
             body : formData
         };
         const resp = await request(url, options);

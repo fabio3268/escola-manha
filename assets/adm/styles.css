@@ -1,0 +1,78 @@
+/* Reset de estilos */
+body, ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Wrapper */
+.wrapper {
+    display: flex;
+}
+
+/* Barra horizontal fixa */
+.navbar {
+    background-color: #4336C6;
+    color: white;
+    padding: 10px 20px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* Menu lateral */
+.sidebar {
+    width: 250px;
+    background-color: #4336C6;
+    color: white;
+    padding-top: 40px;
+    position: fixed;
+    height: 100%;
+}
+
+.menu {
+    padding: 0;
+}
+
+.menu-item {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.menu-item:hover {
+    background-color: #5647d2;
+}
+
+/* Submenu */
+.submenu {
+    display: none;
+    margin-top: 5px;
+    margin-left: 20px;
+}
+
+.submenu-item {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submenu-item:hover {
+    background-color: #5647d2;
+}
+
+/* Mostrar submenu */
+.has-submenu:hover .submenu {
+    display: block;
+}
+
+/* Área de conteúdo */
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f4f4f4;
+    margin-left: 250px;
+    margin-top: 40px; /* Adicionei para deixar espaço para a barra horizontal fixa */
+}

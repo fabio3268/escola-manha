@@ -12,7 +12,10 @@
         <button>Enviar</button>
     </div>
 </form>
-<script type="text/javascript" async>
+<script type="module" async>
+
+    import {request} from "<?= url("assets/_shared/functions.js"); ?>";
+
     const form = document.querySelector("form");
     const headers = {
         email: "fabiosantos@ifsul.edu.br",
@@ -20,13 +23,22 @@
     };
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
-        //console.log(new FormData(form));
-        const data = await fetch(`<?= url("api/user");?>`,{
+
+        const user = await request(`<?= url("api/user");?>`, {
             method: "POST",
             body: new FormData(form),
             headers: headers
         });
-        const user = await data.json();
-        console.log(user.success.user);
+
+        console.log(user.success);
+
+        //console.log(new FormData(form));
+        //const data = await fetch(`<?//= url("api/user");?>//`,{
+        //    method: "POST",
+        //    body: new FormData(form),
+        //    headers: headers
+        //});
+        //const user = await data.json();
+        //console.log(user);
     });
 </script>

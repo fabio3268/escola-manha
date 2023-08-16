@@ -26,6 +26,7 @@
     "php": "7.2.1",
     "ext-pdo": "7.2",
     "coffeecode/router" : "1.0.8",
-    "league/plates": "3.*"
+    "league/plates": "3.*",
+    "firebase/php-jwt": "^5.0"
   }
 }
