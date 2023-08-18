@@ -13,7 +13,7 @@ $route->namespace("Source\App\Api");
 $route->get("/user","Users:read");
 $route->post("/user","Users:create");
 $route->get("/user/login","Users:login");
-
+// apenas para testes
 $route->get("/user/test","Users:testToken");
 
 $route->dispatch();
