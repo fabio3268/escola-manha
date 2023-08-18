@@ -17,7 +17,9 @@ class Api
         header('Content-Type: application/json; charset=UTF-8');
         $this->headers = getallheaders();
 
-        if(isset($this->headers["email"], $this->headers["password"])){
+        var_dump($this->headers);
+
+/*        if(isset($this->headers["email"], $this->headers["password"])){
 
             $this->user = new User();
 
@@ -32,7 +34,7 @@ class Api
                 'userType' => 'User'
             ]);
 
-        }
+        }*/
     }
 
 }

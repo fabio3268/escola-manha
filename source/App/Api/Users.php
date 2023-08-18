@@ -89,4 +89,9 @@ class Users extends Api
         ];
         echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     }
+
+    public function testToken (array $data) : void
+    {
+
+    }
 }
