@@ -92,6 +92,6 @@ class Users extends Api
 
     public function testToken (array $data) : void
     {
-
+        echo "Olá!";
     }
 }
