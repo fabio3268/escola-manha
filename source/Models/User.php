@@ -78,6 +78,29 @@ class User {
         return $this->message;
     }
 
+    public function findById (int $id) : User
+    {
+        $query = "SELECT * FROM users WHERE id = :id";
+        $stmt = Connect::getInstance()->prepare($query);
+        $stmt->bindParam(":id",$id);
+        try {
+            $stmt->execute();
+            if($stmt->rowCount()){
+                $user = $stmt->fetch();
+                $this->id = $user->id;
+                $this->name = $user->name;
+                $this->email = $user->email;
+                $this->password = $user->password;
+                return $this;
+            }
+            $this->message = "Usuário não encontrado!";
+            return $this;
+        } catch (PDOException $e) {
+            $this->message = "Erro: {$e->getMessage()}";
+            return $this;
+        }
+    }
+
     public function insert () : bool
     {
         $query = "INSERT INTO users VALUES (NULL,:name,:email,:password)";
@@ -89,6 +112,7 @@ class User {
         try {
             $stmt->execute();
             if($stmt->rowCount()){
+                $this->id = Connect::getInstance()->lastInsertId();
                 $this->message = "Usuário cadastrado com sucesso!";
                 return true;
             }
@@ -124,6 +148,7 @@ class User {
 
         $this->id = $user->id;
         $this->name = $user->name;
+        $this->email = $user->email;
         $this->message = "Usuário autenticado com sucesso!";
         return true;
 

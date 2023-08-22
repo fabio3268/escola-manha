@@ -11,26 +11,9 @@ class Users extends Api
         parent::__construct();
     }
 
-    public function read (array $data) : void
-    {
-        $response = [
-            "success" => [
-                "code" => 200,
-                "type" => "accepted",
-                "message" => "Dados do usuário"
-            ],
-            "user" => [
-                /*"name" => $this->user->getName(),
-                "email" => $this->user->getEmail(),
-                "token" => $this->token*/
-            ]
-        ];
-        http_response_code(200);
-        echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-    }
-
     public function create (array $data) : void
     {
+
        if(!empty($data)){
             $user = new User($data["name"],$data["email"],$data["password"]);
             if(!$user->insert()){
@@ -47,12 +30,8 @@ class Users extends Api
             }
 
             $response = [
-                "success" => [
-                              "code" => 200,
-                              "type" => "accepted",
-                              "message" => $user->getMessage()
-                ],
                 "user" => [
+                    "id" => $user->getId(),
                     "name" => $user->getName(),
                     "email" => $user->getEmail(),
                 ]
@@ -66,28 +45,23 @@ class Users extends Api
     public function login (array $data) : void
     {
 
-        $user = new User();
-
-        if(!$user->auth($data["email"],$data["password"])){
+        if(!empty($this->token)){
             $response = [
-                "error" => [
-                    "code" => 401,
-                    "type" => "invalid_data",
-                    "message" => $user->getMessage()
-                ]
+                "user" => [
+                    "id" => $this->user->getId(),
+                    "name" => $this->user->getName(),
+                    "email" => $this->user->getEmail(),
+                    "token" => $this->token
+            ]
             ];
             echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-            return;
         }
 
-        $response = [
-            "success" => [
-                "code" => 200,
-                "type" => "accepted",
-                "message" => "Usuário autenticado corretamente..."
-            ]
-        ];
-        echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    }
+
+    public function listAdresses (array $data): void
+    {
+        var_dump($this->user);
     }
 
     public function testToken (array $data) : void
