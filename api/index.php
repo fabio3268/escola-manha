@@ -10,14 +10,11 @@ $route = new Router(url(),":");
 
 $route->namespace("Source\App\Api");
 
-$route->get("/user","Users:read");
-$route->post("/user","Users:create");
 $route->get("/user/login","Users:login");
-
+$route->post("/user","Users:create");
 $route->get("/user/adresses","Users:listAdresses");
 
-// apenas para testes
-$route->get("/user/test","Users:testToken");
+$route->get("/faqs","Faqs:listFaqs");
 
 $route->dispatch();
 

@@ -2,6 +2,7 @@
 
 namespace Source\App\Api;
 
+use Source\Models\Address;
 use Source\Models\User;
 
 class Users extends Api
@@ -24,8 +25,7 @@ class Users extends Api
                         "message" => $user->getMessage()
                     ]
                 ];
-                http_response_code(400);
-                echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+                $this->back($response,400);
                 return;
             }
 
@@ -37,8 +37,7 @@ class Users extends Api
                 ]
             ];
 
-            http_response_code(200);
-            echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+            $this->back($response,201);
         }
     }
 
@@ -54,18 +53,19 @@ class Users extends Api
                     "token" => $this->token
             ]
             ];
-            echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+            $this->back($response,200);
         }
 
     }
 
     public function listAdresses (array $data): void
     {
-        var_dump($this->user);
+
+        if($this->user){
+            $adresses = new Address();
+            $this->back($adresses->selectByIdUser($this->user->getId()),200);
+        }
+
     }
 
-    public function testToken (array $data) : void
-    {
-        echo "Olá!";
-    }
 }

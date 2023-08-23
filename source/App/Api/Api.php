@@ -24,13 +24,14 @@ class Api
             $this->user = new User();
 
             if(!$this->user->auth($this->headers["email"],$this->headers["password"])){
-                echo json_encode([
+                $response = [
                     "error" => [
                         "code" => 401,
                         "type" => "unauthorized",
                         "message" => "Email e/ou senha inválidos"
                     ]
-                ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+                ];
+                $this->back($response,401);
                 return;
             }
 
@@ -40,25 +41,46 @@ class Api
                 'userType' => 'User'
             ]);
 
+            return;
+
         }
 
         if (isset($this->headers["token"])){
             $token = new TokenJWT();
+
             if(!$token->verify($this->headers["token"])){
-                echo json_encode([
+                $response = [
                     "error" => [
                         "code" => 401,
                         "type" => "unauthorized",
                         "message" => "Token inválido"
                     ]
-                ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+                ];
+                $this->back($response,401);
                 return;
             }
 
             $this->user = (new User())->findById($token->token->data->idUser);
             $this->user->setPassword(NULL);
-            //var_dump($this->user);
+            return;
         }
+
+        if(!isset($this->headers["token"], $this->headers["email"], $this->headers["password"])) {
+            $response = [
+                "error" => [
+                    "code" => 400,
+                    "type" => "invalid_data",
+                    "message" => "Informe o token ou email e senha"
+                ]
+            ];
+            $this->back($response,400);
+        }
+    }
+
+    protected function back (array $response, int $code = 200) : void
+    {
+        http_response_code($code);
+        echo json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     }
 
 }

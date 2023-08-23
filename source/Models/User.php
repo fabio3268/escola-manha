@@ -101,8 +101,35 @@ class User {
         }
     }
 
+    public function findByEmail (string $email) : bool
+    {
+        $query = "SELECT * FROM users WHERE email = :email";
+        $stmt = Connect::getInstance()->prepare($query);
+        $stmt->bindParam(":email",$email);
+        try {
+            $stmt->execute();
+            if($stmt->rowCount()){
+                $user = $stmt->fetch();
+                $this->id = $user->id;
+                $this->name = $user->name;
+                $this->email = $user->email;
+                return true;
+            }
+            $this->message = "Usuário não encontrado!";
+            return false;
+        } catch (PDOException $e) {
+            $this->message = "Erro: {$e->getMessage()}";
+            return false;
+        }
+    }
+
     public function insert () : bool
     {
+        if($this->findByEmail($this->email)){
+            $this->message = "E-mail já cadastrado!";
+            return false;
+        }
+
         $query = "INSERT INTO users VALUES (NULL,:name,:email,:password)";
         $stmt = Connect::getInstance()->prepare($query);
         $stmt->bindParam(":name", $this->name);
