@@ -39,7 +39,8 @@ class Api
             $this->token = (new TokenJWT())->create([
                 'idUser' => $this->user->getId(),
                 'userEmail' => $this->user->getEmail(),
-                'userType' => 'User'
+                'userType' => 'User',
+                'name' => $this->user->getName()
             ]);
 
             return;
@@ -60,6 +61,8 @@ class Api
 
                 return;
             }
+
+            //var_dump($token->token->data->name);
 
             $this->user = (new User())->findById($token->token->data->idUser);
             $this->user->setPassword(NULL);
