@@ -32,6 +32,7 @@ class Api
                     ]
                 ];
                 $this->back($response,401);
+
                 return;
             }
 
@@ -42,7 +43,6 @@ class Api
             ]);
 
             return;
-
         }
 
         if (isset($this->headers["token"])){
@@ -57,15 +57,18 @@ class Api
                     ]
                 ];
                 $this->back($response,401);
+
                 return;
             }
 
             $this->user = (new User())->findById($token->token->data->idUser);
             $this->user->setPassword(NULL);
+
             return;
         }
 
-        if(!isset($this->headers["token"], $this->headers["email"], $this->headers["password"])) {
+        if(!isset($this->headers["token"], $this->headers["email"], $this->headers["password"]) &&
+           !isset($_REQUEST["name"],$_REQUEST["email"],$_REQUEST["password"])) {
             $response = [
                 "error" => [
                     "code" => 400,
