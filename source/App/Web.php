@@ -95,6 +95,11 @@ class Web
         ]);
     }
 
+    public function apiFaq (array $data)
+    {
+        echo $this->view->render("api-faqs",[]);
+    }
+
     public function courses (array $data) : void
     {
 
