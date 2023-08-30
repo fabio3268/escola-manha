@@ -8,19 +8,21 @@
 <script type="module" async>
     import {request, requestDebugError} from "<?php echo url("/assets/_shared/functions.js"); ?>";
 
+    // http://localhost/escola-manha/api/faqs
     const url = "<?php echo url("/api/faqs"); ?>";
+
     const options = {
         method: "GET"
     };
 
     const getFaqs = async () => {
         const faqs = await request(url, options);
-        console.log(faqs);
+        //console.log(faqs);
     };
 
     getFaqs();
 
-    /*const button = document.querySelector("button");
+    const button = document.querySelector("button");
     button.addEventListener("click", async () => {
         const faqs = await request(url, options);
         console.log(faqs);
@@ -28,5 +30,5 @@
             console.log(faq);
             document.querySelector("#divFaqs").insertAdjacentHTML("beforeend", `<p>${faq.question} ${faq.answer}</p>`);
         });
-    });*/
+    });
 </script>
