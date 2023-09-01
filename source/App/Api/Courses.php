@@ -13,7 +13,7 @@ class Courses extends Api
 
     public function listByCategory (array $data) : void
     {
-        var_dump($data);
+        //var_dump($data);
         $courses = (new Course())->selectByCategoryId($data["category_id"]);
         $this->back($courses,200);
     }

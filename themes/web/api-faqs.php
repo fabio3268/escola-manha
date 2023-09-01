@@ -6,6 +6,7 @@
 </div>
 
 <script type="module" async>
+
     import {request, requestDebugError}
         from "<?php echo url("/assets/_shared/functions.js"); ?>";
 
@@ -28,8 +29,23 @@
         const faqs = await request(url, options);
         console.log(faqs);
         faqs.forEach((faq) => {
-            console.log(faq);
             document.querySelector("#divFaqs").insertAdjacentHTML("beforeend", `<p>${faq.question} ${faq.answer}</p>`);
         });
     });
+
+
+    console.log("Oi");
+
+    const urlCourses = "<?php echo url("/api/courses"); ?>";
+
+    fetch(urlCourses).then(response => {
+        response.json().then(courses => {
+            //console.log(courses);
+            courses.forEach(course => {
+                console.log(course);
+            });
+        })
+    });
+
+
 </script>
