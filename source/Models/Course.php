@@ -24,4 +24,14 @@ class Course
         return $stmt->fetchAll();
     }
 
+    public function selectByCategoryId(int $categoryId)
+    {
+        $query = "SELECT courses.* 
+                  FROM courses 
+                  JOIN categories ON categories.id = courses.category_id 
+                  WHERE courses.category_id = {$categoryId}";
+        $stmt = Connect::getInstance()->query($query);
+        return $stmt->fetchAll();
+    }
+
 }

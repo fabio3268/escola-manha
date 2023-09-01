@@ -6,7 +6,8 @@
 </div>
 
 <script type="module" async>
-    import {request, requestDebugError} from "<?php echo url("/assets/_shared/functions.js"); ?>";
+    import {request, requestDebugError}
+        from "<?php echo url("/assets/_shared/functions.js"); ?>";
 
     // http://localhost/escola-manha/api/faqs
     const url = "<?php echo url("/api/faqs"); ?>";

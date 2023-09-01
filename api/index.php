@@ -16,6 +16,9 @@ $route->get("/user/adresses","Users:listAdresses");
 
 $route->get("/faqs","Faqs:listFaqs");
 
+$route->get("/courses/category/{category_id}","Courses:listByCategory");
+$route->get("/courses","Courses:listCourses");
+
 $route->dispatch();
 
 /** ERROR REDIRECT */
