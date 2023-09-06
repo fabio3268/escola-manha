@@ -27,7 +27,7 @@
     const button = document.querySelector("button");
     button.addEventListener("click", async () => {
         const faqs = await request(url, options);
-        console.log(faqs);
+        //console.log(faqs);
         faqs.forEach((faq) => {
             document.querySelector("#divFaqs").insertAdjacentHTML("beforeend", `<p>${faq.question} ${faq.answer}</p>`);
         });
@@ -46,6 +46,5 @@
             });
         })
     });
-
 
 </script>
