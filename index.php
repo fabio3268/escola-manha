@@ -25,7 +25,10 @@ $route->get("/blog","Web:blog");
 $route->get("/contato","Web:contact");
 $route->get("/perfil","Web:profile");
 $route->get("/faq","Web:faq");
+
+
 $route->get("/api-faq","Web:apiFaq");
+$route->get("/api-login","Web:apiLogin");
 
 // Rotas Cursos
 

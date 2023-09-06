@@ -1,6 +1,6 @@
-<h2>Olá, FAQS</h2>
+<h2>Testes de API</h2>
 
-<button>Faqs</button>
+<button id="buttonFaqs">Faqs</button>
 
 <div id="divFaqs">
 </div>
@@ -24,7 +24,7 @@
 
     getFaqs();
 
-    const button = document.querySelector("button");
+    const button = document.querySelector("#buttonFaqs");
     button.addEventListener("click", async () => {
         const faqs = await request(url, options);
         //console.log(faqs);
@@ -33,10 +33,7 @@
         });
     });
 
-
-    console.log("Oi");
-
-    const urlCourses = "<?php echo url("/api/courses"); ?>";
+    const urlCourses = "<?php echo url("/api/courses/category/2"); ?>";
 
     fetch(urlCourses).then(response => {
         response.json().then(courses => {
