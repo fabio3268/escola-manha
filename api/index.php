@@ -14,6 +14,8 @@ $route->get("/user/login","Users:login");
 $route->post("/user","Users:create");
 $route->get("/user/adresses","Users:listAdresses");
 
+$route->post("/user/photo","Users:updatePhoto");
+
 $route->get("/faqs","Faqs:listFaqs");
 
 $route->get("/courses/category/{category_id}","Courses:listByCategory");
