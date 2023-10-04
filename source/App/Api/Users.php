@@ -72,8 +72,6 @@ class Users extends Api
 
     public function updatePhoto(array $data): void
     {
-        //echo "updatePhoto";
-        //var_dump($_FILES);
         chdir("..");
 
         $image = new Image(CONF_UPLOAD_DIR, CONF_UPLOAD_IMAGE_DIR);
@@ -92,8 +90,6 @@ class Users extends Api
                 $this->back(["error" => $e->getMessage()], 400);
             }
         }
-
-
     }
 
 }
