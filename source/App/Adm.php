@@ -27,4 +27,11 @@ class Adm
         );
     }
 
+    public function courses ()
+    {
+        echo $this->view->render(
+            "courses"
+        );
+    }
+
 }

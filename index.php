@@ -42,6 +42,7 @@ $route->group(null);
 $route->group("/admin");
 $route->get("/", "Adm:home");
 $route->get("/professores", "Adm:teachers");
+$route->get("/cursos", "Adm:courses");
 $route->group(null);
 
 $route->dispatch();

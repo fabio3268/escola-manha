@@ -21,8 +21,8 @@
                     <li class="submenu-item">Adicionar Aluno</li>
                 </ul>
             </li>
-            <li class="menu-item">Professores</li>
-            <li class="menu-item">Cursos</li>
+            <li class="menu-item"><a href="professores">Professores</a></li>
+            <li class="menu-item"><a href="cursos">Cursos</a></li>
             <li class="menu-item">Configurações</li>
         </ul>
     </aside>
