@@ -90,12 +90,27 @@
         if(event.target.tagName === "TD"){
             console.log(`Mostrar: ${event.target.parentNode.getAttribute("data-id")}`);
             // Requisição para getCourse
-
+            const urlGetBook = "<?= url("api/courses/"); ?>" + event.target.parentNode.getAttribute("data-id");
+            const optionsGetBook = {
+                method : "get"
+            };
+            fetch(urlGetBook, optionsGetBook).then((response) => {
+                response.json().then((book) => {
+                    // carregar os dados no formulário
+                    // console.log(book[0]);
+                    const form = document.querySelector("#edit-form");
+                    form.querySelector("#id").value = book[0].id;
+                    form.querySelector("#name").value = book[0].name;
+                    form.querySelector("#category_id").value = book[0].category_id;
+                    form.querySelector("#price").value = book[0].price;
+                });
+            });
             openModal();
         }
 
         if(event.target.tagName === "BUTTON"){
             console.log(`Apagar: ${event.target.parentNode.parentNode.getAttribute("data-id")}`);
+            // Requisisão para deleteCourse
             //event.target.parentNode.parentNode.remove();
         }
     });
