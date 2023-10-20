@@ -90,19 +90,19 @@
         if(event.target.tagName === "TD"){
             console.log(`Mostrar: ${event.target.parentNode.getAttribute("data-id")}`);
             // Requisição para getCourse
-            const urlGetBook = "<?= url("api/courses/"); ?>" + event.target.parentNode.getAttribute("data-id");
-            const optionsGetBook = {
+            const urlGetCourse = "<?= url("api/courses/"); ?>" + event.target.parentNode.getAttribute("data-id");
+            const optionsGetCourse = {
                 method : "get"
             };
-            fetch(urlGetBook, optionsGetBook).then((response) => {
-                response.json().then((book) => {
+            fetch(urlGetCourse, optionsGetCourse).then((response) => {
+                response.json().then((course) => {
                     // carregar os dados no formulário
                     // console.log(book[0]);
                     const form = document.querySelector("#edit-form");
-                    form.querySelector("#id").value = book[0].id;
-                    form.querySelector("#name").value = book[0].name;
-                    form.querySelector("#category_id").value = book[0].category_id;
-                    form.querySelector("#price").value = book[0].price;
+                    form.querySelector("#id").value = course[0].id;
+                    form.querySelector("#name").value = course[0].name;
+                    form.querySelector("#category_id").value = course[0].category_id;
+                    form.querySelector("#price").value = course[0].price;
                 });
             });
             openModal();
