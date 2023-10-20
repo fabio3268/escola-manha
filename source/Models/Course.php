@@ -41,4 +41,12 @@ class Course
         return $stmt->fetchAll();
     }
 
+    public function update()
+    {
+        $query = "UPDATE courses 
+                  SET name = :name,  category_id = :category_id, price = :price 
+                  WHERE id = :id";
+
+    }
+
 }

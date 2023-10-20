@@ -29,4 +29,11 @@ class Courses extends Api
         $this->back($course,200);
     }
 
+    public function updateCourse(array $data): void
+    {
+        var_dump($data);
+
+        //$this->back($data,200);
+    }
+
 }

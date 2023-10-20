@@ -21,6 +21,7 @@ $route->get("/faqs","Faqs:listFaqs");
 $route->get("/courses/category/{category_id}","Courses:listByCategory");
 $route->get("/courses","Courses:listCourses");
 $route->get("/courses/{course_id}","Courses:getCourse");
+$route->put("/courses","Courses:updateCourse");
 
 $route->dispatch();
 

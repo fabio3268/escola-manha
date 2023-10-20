@@ -110,9 +110,11 @@
 
         if(event.target.tagName === "BUTTON"){
             console.log(`Apagar: ${event.target.parentNode.parentNode.getAttribute("data-id")}`);
+            //event.stopPropagation();
             // Requisisão para deleteCourse
             //event.target.parentNode.parentNode.remove();
         }
+
     });
 
     const selectCategory = document.querySelector("#category");
