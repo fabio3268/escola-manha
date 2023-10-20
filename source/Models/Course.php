@@ -14,6 +14,13 @@ class Course
         return $stmt->fetchAll();
     }
 
+    public function selectById (int $id)
+    {
+        $query = "SELECT * FROM courses WHERE id = {$id}";
+        $stmt = Connect::getInstance()->query($query);
+        return $stmt->fetchAll();
+    }
+
     public function selectByCategory(string $categoryName)
     {
         $query = "SELECT courses.* 

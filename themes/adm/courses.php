@@ -89,6 +89,8 @@
 
         if(event.target.tagName === "TD"){
             console.log(`Mostrar: ${event.target.parentNode.getAttribute("data-id")}`);
+            // Requisição para getCourse
+
             openModal();
         }
 
@@ -114,4 +116,12 @@
             listCourses.appendChild(tr);
         });
     });
+
+    // Edição de Cursos
+    const editForm = document.querySelector("#edit-form");
+    editForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const urlUpdate = "<?= url("api/courses/"); ?>" + editForm.id.value;
+    });
+
 </script>

@@ -23,4 +23,10 @@ class Courses extends Api
         $this->back($courses,200);
     }
 
+    public function getCourse(array $data): void
+    {
+        $course = (new Course())->selectById($data["course_id"]);
+        $this->back($course,200);
+    }
+
 }
